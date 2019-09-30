@@ -12,4 +12,6 @@ apt-get -y install apt-transport-https \
     apt-get -y install docker-ce && \
     apt-get clean && \
     usermod -a -G docker jenkins
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+RUN chmod +x ./kubectl;mv ./kubectl /usr/local/bin/kubectl
 USER jenkins
